@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# Ingredient.create(name: "lemon")
+# Ingredient.create(name: "ice")
+# Ingredient.create(name: "mint leaves")
+puts "clearing database..."
+Ingredient.destroy_all
+puts "creating new Ingredients..."
+
+url = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
+response = HTTParty.get(url)
+data = response.parsed_response
+
+data_array = data['drinks']
+
+data_array.each do |hash|
+  p hash['strIngredient1']
+  Ingredient.create!(name: hash['strIngredient1'])
+end
+puts 'done!'
