@@ -1,32 +1,40 @@
-<!-- <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
-  <div class="container">
+<div class="container banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path ("banner_image_tyk76t")%>')">
+
     <h1><strong>Cocktails!</strong> </h1>
     <p>Try a classic or create your own</p>
     <a class="btn btn-flat" href="#">Create my own!</a>
   </div>
-</div> -->
-<h1><strong>Cocktails!</strong> </h1>
-<a>
-<%= cl_image_tag("banner_image_tyk76t",
-      width: 400, height: 300, crop: :fill) %>
-      </a>
-<ul>
-  <% @cocktails.each do |c| %>
-  <li> <%= link_to c.name, cocktail_path(c) %> </li>
+</div>
+<div class="container">
+
+
+
+
+    <% @cocktails.each do |c| %>
+    <div class="flexbox d-flex flex-row">
+
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path ("pretty_ct_pmwvtg"), crop: :fill %>')">
+        <%= link_to c.name, cocktail_path(c) %>
+      </div>
+    </div>
+    <% end %>
+
+
+
+  <h2>Add a cocktail </h2>
+  <%= simple_form_for (@cocktail) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :photo, as: :file %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "add a cocktail", class: "btn btn-primary" %>
+    </div>
   <% end %>
-</ul>
-<h2>Add a cocktail </h2>
-<%= simple_form_for (@cocktail) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :name %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.submit "add a cocktail", class: "btn btn-primary" %>
-  </div>
-<% end %>
+</div>
 
 
