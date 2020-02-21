@@ -1,4 +1,15 @@
-<h1>Cocktails!</h1>
+<!-- <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1><strong>Cocktails!</strong> </h1>
+    <p>Try a classic or create your own</p>
+    <a class="btn btn-flat" href="#">Create my own!</a>
+  </div>
+</div> -->
+<h1><strong>Cocktails!</strong> </h1>
+<a>
+<%= cl_image_tag("banner_image_tyk76t",
+      width: 400, height: 300, crop: :fill) %>
+      </a>
 <ul>
   <% @cocktails.each do |c| %>
   <li> <%= link_to c.name, cocktail_path(c) %> </li>
@@ -17,6 +28,5 @@
     <%= f.submit "add a cocktail", class: "btn btn-primary" %>
   </div>
 <% end %>
-
 
 
