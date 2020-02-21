@@ -4,7 +4,7 @@
   <li> <%= link_to c.name, cocktail_path(c) %> </li>
   <% end %>
 </ul>
-<h2>Add a cocktail</h2>
+<h2>Add a cocktail </h2>
 <%= simple_form_for (@cocktail) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
